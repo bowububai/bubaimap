@@ -22,7 +22,7 @@
 
 点击下方链接直接在浏览器中体验（无需安装）：
 
-**https://wbapp-w3izo4mivngxxj3m4nfsph.app.workbuddy.host/?sharecode=BR5YALGXD6**
+**https://bowububai.github.io/bubaimap/**
 
 ## 项目简介
 
