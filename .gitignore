@@ -10,5 +10,12 @@ Thumbs.db
 _*.png
 *.tmp
 
+# 小红书小工具专属物料（非本开源仓库内容，勿提交）
+cover_3x4.png
+icon_1024.png
+index_offline.html
+发布信息.md
+*.zip
+
 # 本仓库仅发布单文件页面，源台账 data/ 与构建脚本 scripts/ 不在此目录，
 # 不会被提交。若把本目录作为独立 GitHub 仓库，请确认不包含任何内部数据。
