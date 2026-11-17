@@ -744,6 +744,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .leaflet-control-scale-line{
     background:rgba(14,18,16,.72)!important;border-color:rgba(234,228,212,.45)!important;
     color:#eae4d4!important;text-shadow:none!important;font-size:10.5px!important;
+    padding:2px 4px 1px!important;
   }
   .leaflet-control-attribution{
     background:rgba(14,18,16,.6)!important;color:#7b8478!important;font-size:9.5px!important;
@@ -942,7 +943,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     header .sep{display:none;}
     header .brand b{font-size:14px;}
     header .now .y{font-size:20px;}
-    #side{position:fixed;top:0;right:0;bottom:0;width:82%;max-width:340px;z-index:900;      transform:translateX(100%);transition:transform .28s ease;box-shadow:-8px 0 30px rgba(0,0,0,.5);}
+    #side{position:fixed;top:0;right:0;bottom:0;width:62%;max-width:264px;z-index:1050;      transform:translateX(100%);transition:transform .28s ease;box-shadow:-8px 0 30px rgba(0,0,0,.5);}
     #side.open{transform:translateX(0);}
     #stage{grid-column:1;grid-row:2;}
     .side-toggle{display:flex;}
@@ -1149,7 +1150,7 @@ var map = L.map('map', {
   zoomControl: false, attributionControl: false, worldCopyJump: false
 });
 L.control.zoom({ position: 'bottomleft', zoomInTitle: '放大', zoomOutTitle: '缩小' }).addTo(map);
-L.control.scale({ position: 'bottomleft', imperial: false, maxWidth: 130 }).addTo(map);
+L.control.scale({ position: 'bottomleft', imperial: false, maxWidth: 80 }).addTo(map);
 
 /* 底图瓦片：本地/文件方式打开时走 127.0.0.1:8731 的瓦片中转（服务端抓 Esri 并缓存），
    免得浏览器被系统代理拦住导致整片黑；公开部署时仍用直连。
