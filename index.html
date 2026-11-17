@@ -932,7 +932,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .welcome-btn:hover{transform:translateY(-1px);filter:brightness(1.06);}
   .welcome-copy{margin-top:18px;font-size:11.5px;color:var(--ink3,#8a9489);letter-spacing:.04em;}
   /* 移动端竖屏：文化列表抽屉化 */
-  .side-toggle{display:none;position:absolute;top:12px;right:12px;z-index:800;    width:40px;height:40px;border-radius:10px;border:1px solid var(--line);    background:rgba(21,26,23,.9);color:var(--ink);cursor:pointer;    box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px);    align-items:center;justify-content:center;font-size:18px;line-height:1;}
+  .side-toggle{display:none;position:absolute;top:64px;right:12px;z-index:800;    width:40px;height:40px;border-radius:10px;border:1px solid var(--line);    background:rgba(21,26,23,.9);color:var(--ink);cursor:pointer;    box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px);    align-items:center;justify-content:center;font-size:18px;line-height:1;}
   .side-mask{display:none;position:fixed;inset:0;z-index:890;background:rgba(0,0,0,.45);}
   @media (max-width:760px){
     #app{grid-template-columns:1fr;grid-template-rows:auto 1fr var(--tl-h);}
@@ -2044,6 +2044,22 @@ map.on('zoomend', function () {
   buildAxis();
   buildAxis();               // 二次触发，等首帧布局稳定后校准
   setTimeout(buildAxis, 220);
+  /* 移动端：文化列表抽屉开关 */
+  (function () {
+    var side = document.getElementById('side');
+    var mask = document.getElementById('sideMask');
+    var btn = document.getElementById('sideToggle');
+    if (!side || !btn) return;
+    function openSide() { side.classList.add('open'); if (mask) mask.classList.add('show'); }
+    function closeSide() { side.classList.remove('open'); if (mask) mask.classList.remove('show'); }
+    btn.onclick = function () { side.classList.contains('open') ? closeSide() : openSide(); };
+    if (mask) mask.onclick = closeSide;
+    /* 点列表项定位后，移动端自动收起抽屉，露出地图 */
+    var listEl = document.getElementById('list');
+    if (listEl) listEl.addEventListener('click', function () {
+      if (window.innerWidth <= 760) setTimeout(closeSide, 260);
+    });
+  })();
   /* 欢迎窗口：默认每次进入显示；localStorage 仅作「记住不再弹」的可选增强。
      关键：按钮绑定绝不放在可能抛异常的 try 内，保证沙箱 iframe（无 localStorage）下
      点击「进入地图」也能正常关闭，避免审核判为「按钮无法点击」功能缺陷。 */
